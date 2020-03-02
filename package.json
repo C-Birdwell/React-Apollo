@@ -11,7 +11,7 @@
     "destroy": "rm -Rf public/dist",
     "test": "jest --config=jest.config.json",
     "start": "node server/server.js",
-    "heroku-postbuild": "env-cmd -f ../config/prod.env yarn run build:prod",
+    "heroku-postbuild": "yarn run build:prod",
     "pretty": "prettier --semi false --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\" --write \"src/**/*.scss\""
   },
   "dependencies": {
