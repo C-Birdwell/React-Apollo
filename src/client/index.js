@@ -1,7 +1,7 @@
 import ApolloClient from 'apollo-boost'
 
 const client = new ApolloClient({
-  uri: process.env.PRISMA_ENDPOINT,
+  uri: 'https://boilerplate-apollo.herokuapp.com',
   request: operation => {
     const token = localStorage.getItem('token')
     operation.setContext({
