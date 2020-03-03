@@ -26,7 +26,7 @@ class DashboardPage extends React.Component {
           <div className="col-3">
             {!flagNewUser ? <FormLogin /> : <FormCreateUser />}
             <div className="button" onClick={() => _flagNewUser(!flagNewUser)}>
-              New User?
+              {flagNewUser ? 'Back to Login' : 'New User?'}
             </div>
           </div>
           <div className="col-1" />
