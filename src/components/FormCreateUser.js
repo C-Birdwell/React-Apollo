@@ -22,7 +22,7 @@ class FormCreateUser extends React.Component {
       createUserEmail,
     } = this.props
     return (
-      <div>
+      <div className="form-wrapper">
         <h2>Create User</h2>
         <input
           type="text"
@@ -42,7 +42,8 @@ class FormCreateUser extends React.Component {
           onChange={val => _createUserEmail(val.target.value)}
           placeholder="Email"
         />
-        <button
+        <div
+          className="button"
           onClick={() =>
             _MutateCreateUser(
               createUserUsername,
@@ -53,7 +54,7 @@ class FormCreateUser extends React.Component {
           }
         >
           Create New User
-        </button>
+        </div>
       </div>
     )
   }

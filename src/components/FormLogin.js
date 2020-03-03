@@ -30,9 +30,12 @@ class FormLogin extends React.Component {
           onChange={val => _loginUserPassword(val.target.value)}
           placeholder="Password"
         />
-        <button onClick={() => _MutationLogIn(loginEmail, loginPassword, _getLoggedUser)}>
+        <div
+          className="button"
+          onClick={() => _MutationLogIn(loginEmail, loginPassword, _getLoggedUser)}
+        >
           Login
-        </button>
+        </div>
       </div>
     )
   }

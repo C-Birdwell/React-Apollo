@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Header = () => (
   <header>
-    <h1>React GraphQL MongoDB</h1>
+    <h1>React GraphQL PostgresSQL</h1>
     <div className="row">
       <NavLink to="/" activeClassName="is-active" exact={true} className="nav-link">
         <div className="nav-item">Dashboard</div>
