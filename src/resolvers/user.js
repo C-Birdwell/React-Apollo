@@ -7,7 +7,7 @@ const _MutateCreateUser = (name, email, password, func) => {
   mutation {
     createUser( data: { name: ${JSON.stringify(name)}, email: ${JSON.stringify(
     email,
-  )}, password: ${JSON.stringify(password)}}) {
+  ).toLowerCase()}, password: ${JSON.stringify(password)}}) {
       user {
         id
         name

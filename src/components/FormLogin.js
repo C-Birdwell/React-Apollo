@@ -3,7 +3,13 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { _MutationLogIn } from '../resolvers'
-import { _loginUserEmail, _loginUserPassword, _getLoggedUser, _loginUserClear } from '../actions'
+import {
+  _loginUserEmail,
+  _loginUserPassword,
+  _getLoggedUser,
+  _loginUserClear,
+  _flagLoading,
+} from '../actions'
 
 class FormLogin extends React.Component {
   render() {
@@ -12,6 +18,7 @@ class FormLogin extends React.Component {
       _loginUserEmail,
       _loginUserPassword,
       _loginUserClear,
+      _flagLoading,
       loginEmail,
       loginPassword,
     } = this.props
@@ -32,7 +39,10 @@ class FormLogin extends React.Component {
         />
         <div
           className="button"
-          onClick={() => _MutationLogIn(loginEmail, loginPassword, _getLoggedUser)}
+          onClick={() => {
+            _flagLoading(true),
+              _MutationLogIn(loginEmail, loginPassword, _getLoggedUser, _flagLoading)
+          }}
         >
           Login
         </div>
@@ -49,7 +59,7 @@ const mapStateToProps = state => ({
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { _loginUserEmail, _loginUserPassword, _getLoggedUser, _loginUserClear },
+    { _loginUserEmail, _loginUserPassword, _getLoggedUser, _loginUserClear, _flagLoading },
     dispatch,
   )
 }

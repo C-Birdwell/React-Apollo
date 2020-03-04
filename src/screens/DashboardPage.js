@@ -36,7 +36,9 @@ class DashboardPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ flagNewUser: state.visualFlags.flagNewUser })
+const mapStateToProps = state => ({
+  flagNewUser: state.visualFlags.flagNewUser,
+})
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ _flagNewUser }, dispatch)
