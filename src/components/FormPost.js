@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import { _MutateCreatePost } from '../resolvers'
 import {
   _createPostTitle,
   _createPostBody,
@@ -20,9 +21,12 @@ class FormPost extends React.Component {
       _createPostClear,
       createPostTitle,
       createPostBody,
+      createPostPublished,
+      loggedUser,
     } = this.props
     return (
       <div className="form-wrapper">
+        <p>Welcome back {loggedUser.name}!</p>
         <h2>Create Post</h2>
         <input
           type="text"
@@ -36,7 +40,22 @@ class FormPost extends React.Component {
           onChange={val => _createPostBody(val.target.value)}
           placeholder="Body Content"
         />
-        <button onClick={() => {}}>Create Post</button>
+        <div
+          className={`button-toggle${createPostPublished ? '-on' : ''}`}
+          onClick={() => {
+            _createPostPublished(!createPostPublished)
+          }}
+        >
+          Publish
+        </div>
+        <div
+          className="button"
+          onClick={() =>
+            _MutateCreatePost(createPostTitle, createPostBody, createPostPublished, loggedUser.id)
+          }
+        >
+          Create Post
+        </div>
       </div>
     )
   }
