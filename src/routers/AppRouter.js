@@ -1,8 +1,9 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import DashboardPage from '../screens/DashboardPage'
+import PostsPage from '../screens/PostsPage'
 import HelpPage from '../screens/HelpPage'
 import NotFoundPage from '../screens/NotFoundPage'
 import ProtectedPage from '../screens/ProtectedPage'
@@ -14,13 +15,16 @@ class AppRouter extends React.Component {
     const { loading, loggedUser } = this.props
     return (
       <BrowserRouter>
-        <div>
+        <div className="grid-header">
           <Header />
+        </div>
+        <div className="grid-body">
           <Switch>
             <Route path="/" exact>
               {loggedUser ? <ProtectedPage /> : <DashboardPage />}
             </Route>
             <Route path="/works" />
+            <Route path="/posts" component={PostsPage} />
             <Route path="/help" component={HelpPage} />
             <Route component={NotFoundPage} />
           </Switch>

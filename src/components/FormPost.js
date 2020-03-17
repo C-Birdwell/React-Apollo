@@ -2,13 +2,16 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { _MutateCreatePost } from '../resolvers'
+import { Button, InputText, InputTextArea } from './subcomponents'
+import { _MutateCreatePost, _QueryPosts } from '../resolvers'
+
 import {
   _createPostTitle,
   _createPostBody,
   _createPostPublished,
   _createPostAuthor,
   _createPostClear,
+  _getAllPosts,
 } from '../actions'
 
 class FormPost extends React.Component {
@@ -19,6 +22,7 @@ class FormPost extends React.Component {
       _createPostPublished,
       _createPostAuthor,
       _createPostClear,
+      _getAllPosts,
       createPostTitle,
       createPostBody,
       createPostPublished,
@@ -26,35 +30,41 @@ class FormPost extends React.Component {
     } = this.props
     return (
       <div className="form-wrapper">
-        <p>Welcome back {loggedUser.name}!</p>
-        <h2>Create Post</h2>
-        <input
-          type="text"
-          value={createPostTitle}
-          onChange={val => _createPostTitle(val.target.value)}
-          placeholder="Title"
-        />
-        <textarea
-          rows={4}
-          value={createPostBody}
-          onChange={val => _createPostBody(val.target.value)}
-          placeholder="Body Content"
-        />
-        <div
-          className={`button-toggle${createPostPublished ? '-on' : ''}`}
-          onClick={() => {
-            _createPostPublished(!createPostPublished)
-          }}
-        >
-          Publish
+        <div className="col-1">
+          <p>Welcome back {loggedUser.name}!</p>
+          <h2>Create Post</h2>
         </div>
-        <div
-          className="button"
-          onClick={() =>
-            _MutateCreatePost(createPostTitle, createPostBody, createPostPublished, loggedUser.id)
-          }
-        >
-          Create Post
+        <div className="col-7">
+          <InputText value={createPostTitle} onChange={_createPostTitle} placeholder="Title" />
+
+          <InputTextArea
+            value={createPostBody}
+            onChange={_createPostBody}
+            placeholder="Body Content"
+          />
+        </div>
+        <div className="col-2">
+          <div
+            className={`button-toggle${createPostPublished ? '-on' : ''}`}
+            onClick={() => {
+              _createPostPublished(!createPostPublished)
+            }}
+          >
+            Publish
+          </div>
+          <Button
+            text="Create Post"
+            onClick={() =>
+              _MutateCreatePost(
+                createPostTitle,
+                createPostBody,
+                createPostPublished,
+                loggedUser.id,
+                _getAllPosts,
+              )
+            }
+          />
+          <Button text="Get All" onClick={() => _QueryPosts(_getAllPosts)} />
         </div>
       </div>
     )
@@ -67,6 +77,7 @@ const mapStateToProps = state => ({
   createPostAuthor: state.post.createPostAuthor,
   createPostPublished: state.post.createPostPublished,
   loggedUser: state.user.loggedUser,
+  posts: state.post.posts,
 })
 
 function mapDispatchToProps(dispatch) {
@@ -77,6 +88,7 @@ function mapDispatchToProps(dispatch) {
       _createPostPublished,
       _createPostAuthor,
       _createPostClear,
+      _getAllPosts,
     },
     dispatch,
   )

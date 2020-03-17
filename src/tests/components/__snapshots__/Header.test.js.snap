@@ -2,21 +2,64 @@
 
 exports[`should render Header correctly 1`] = `
 <header>
-  <h1>
-    Expensify
-  </h1>
-  <NavLink
-    activeClassName="is-active"
-    exact={true}
-    to="/"
+  <div
+    className="row"
   >
-    Dashboard
-  </NavLink>
-  <NavLink
-    activeClassName="is-active"
-    to="/create"
-  >
-    Create Expense
-  </NavLink>
+    <div
+      className="col-2"
+    >
+      <h1>
+        React GraphQL PostgresSQL
+      </h1>
+    </div>
+    <div
+      className="col-3"
+    >
+      <div
+        className="row nav"
+      >
+        <NavLink
+          activeClassName="is-active"
+          className="nav-link"
+          exact={true}
+          to="/"
+        >
+          <div
+            className="nav-item"
+          >
+            <p>
+              Dashboard
+            </p>
+          </div>
+        </NavLink>
+        <NavLink
+          activeClassName="is-active"
+          className="nav-link"
+          to="/posts"
+        >
+          <div
+            className="nav-item"
+          >
+            <p>
+              Posts
+            </p>
+          </div>
+        </NavLink>
+        <NavLink
+          activeClassName="is-active"
+          className="nav-link"
+          to="/help"
+        >
+          <div
+            className="nav-item"
+          >
+            <p>
+              Help Page
+            </p>
+          </div>
+        </NavLink>
+      </div>
+    </div>
+  </div>
 </header>
 `;

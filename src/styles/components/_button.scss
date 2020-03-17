@@ -4,10 +4,13 @@
   text-align: center;
   background-color: green;
   max-width: 200px;
+  max-height: 80px;
   color: #fff;
   align-self: center;
   align-items: center;
   border-radius: 5px;
+  justify-content: center;
+  transition: all 0.75s;
   &-toggle {
     @extend .button;
     background-color: grey;
@@ -15,5 +18,14 @@
       @extend .button-toggle;
       background-color: skyblue;
     }
+  }
+  & p {
+    color: #fff;
+    display: block;
+    flex: 0;
+    margin: 0 0 0 0;
+  }
+  &:hover {
+    transform: scale(1.08);
   }
 }

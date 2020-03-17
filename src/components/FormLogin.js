@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import { Button, InputText } from './subcomponents'
 import { _MutationLogIn } from '../resolvers'
 import {
   _loginUserEmail,
@@ -24,27 +25,26 @@ class FormLogin extends React.Component {
     } = this.props
     return (
       <div className="form-wrapper">
-        <h2>Login User</h2>
-        <input
-          type="text"
-          value={loginEmail}
-          onChange={val => _loginUserEmail(val.target.value)}
-          placeholder="Email"
-        />
-        <input
-          type="text"
-          value={loginPassword}
-          onChange={val => _loginUserPassword(val.target.value)}
-          placeholder="Password"
-        />
-        <div
-          className="button"
-          onClick={() => {
-            _flagLoading(true),
-              _MutationLogIn(loginEmail, loginPassword, _getLoggedUser, _flagLoading)
-          }}
-        >
-          Login
+        <div className="col-1">
+          <h2>Login User</h2>
+        </div>
+        <div className="col-7 center">
+          <InputText value={loginEmail} onChange={_loginUserEmail} placeholder="Email" />
+          <InputText
+            value={loginPassword}
+            onChange={_loginUserPassword}
+            placeholder="Password"
+            secure
+          />
+        </div>
+        <div className="col-2">
+          <Button
+            onClick={() => {
+              _flagLoading(true),
+                _MutationLogIn(loginEmail, loginPassword, _getLoggedUser, _flagLoading)
+            }}
+            text="Login"
+          />
         </div>
       </div>
     )

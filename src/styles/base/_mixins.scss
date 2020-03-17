@@ -1,0 +1,14 @@
+%reset-background {
+  -webkit-appearance: none;
+  color: #000;
+  background-color: transparent;
+  border-width: 0px;
+  height: auto;
+}
+
+@mixin resetInput {
+  @extend %reset-background;
+  &:focus {
+    outline: none;
+  }
+}

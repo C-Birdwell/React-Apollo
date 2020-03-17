@@ -1,38 +1,48 @@
 @import 'settings';
 
+%flex-layout {
+  display: flexbox;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
 }
 
 body {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+  @extend %flex-layout;
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
-  min-height: 100vh;
-  width: 100%;
+  min-height: calc(100vh + 100px);
   position: relative;
+  background-color: #7a7a7a;
   & * {
-    display: flexbox;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    box-sizing: border-box;
+    @extend %flex-layout;
     height: 100%;
-    width: 100%;
   }
 }
 
-.is-active {
-  font-weight: bold;
+#app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: minmax(auto, 20vh) 4fr;
+  & .grid-header {
+    grid-area: header;
+    max-height: 20vh;
+  }
+  & .grid-body {
+    grid-area: main;
+  }
+  grid-template-areas:
+    'header'
+    'main';
 }

@@ -5,9 +5,25 @@
 @for $i from 1 through 100 {
   .col-#{$i} {
     flex: $i;
+    flex-basis: 0;
+    flex-shrink: 0;
   }
 }
 
 .center {
   justify-content: center;
+}
+
+.content {
+  height: auto;
+}
+
+.grid-container {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+  grid-row-gap: 20px;
+  &.grid-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

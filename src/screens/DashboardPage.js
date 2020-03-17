@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet'
 import { _flagNewUser } from '../actions'
 import FormLogin from '../components/FormLogin'
 import FormCreateUser from '../components/FormCreateUser'
+import { Button } from '../components/subcomponents'
 
 class DashboardPage extends React.Component {
   renderHead() {
@@ -16,20 +17,27 @@ class DashboardPage extends React.Component {
     )
   }
 
+  renderForm(flag) {
+    return <div className="col-3">{!flag ? <FormLogin /> : <FormCreateUser />}</div>
+  }
+
   render() {
     const { _flagNewUser, flagNewUser } = this.props
     return (
-      <div>
+      <div className="content">
         {this.renderHead()}
-        <div className="row">
+        <div className="row col-4">
           <div className="col-1" />
-          <div className="col-3">
-            {!flagNewUser ? <FormLogin /> : <FormCreateUser />}
-            <div className="button" onClick={() => _flagNewUser(!flagNewUser)}>
-              {flagNewUser ? 'Back to Login' : 'New User?'}
-            </div>
+          {this.renderForm(flagNewUser)}
+          <div className="col-1" />
+        </div>
+        <div className="row col-1">
+          <div className="col-1">
+            <Button
+              onClick={() => _flagNewUser(!flagNewUser)}
+              text={flagNewUser ? 'Back to Login' : 'New User?'}
+            />
           </div>
-          <div className="col-1" />
         </div>
       </div>
     )

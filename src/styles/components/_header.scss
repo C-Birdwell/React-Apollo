@@ -1,2 +1,24 @@
+header {
+  height: auto;
+}
+
+.nav {
+  flex: 2;
+  justify-content: flex-end;
+}
+
 .nav-link {
+  justify-content: center;
+  background-color: white;
+  max-width: 200px;
+  max-height: 200px;
+  &:hover {
+    background-color: tomato;
+  }
+}
+
+.nav-item {
+  text-align: center;
+  display: block;
+  flex: 0;
 }

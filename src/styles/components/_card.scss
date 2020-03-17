@@ -1,0 +1,17 @@
+.card {
+  &-container {
+    background-color: #fff;
+    text-align: center;
+    max-width: 95%;
+    max-height: 350px;
+    justify-content: center;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  &-title {
+    background-color: lightgreen;
+  }
+  &-author {
+    background-color: lightcyan;
+  }
+}
