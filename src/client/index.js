@@ -28,8 +28,8 @@ const client = new ApolloClient({
   },
 })
 
-client.defaultOptions.query = {
-  fetchPolicy: 'no-cache',
-}
+// client.defaultOptions.query = {
+//   fetchPolicy: 'no-cache',
+// }
 
 export { client as default }

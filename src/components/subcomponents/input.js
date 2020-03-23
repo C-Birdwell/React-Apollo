@@ -20,7 +20,7 @@ export class InputText extends React.Component {
         className={`input-container${value && ' val'}${isActive ? ' active' : ''}`}
         onClick={this.focusTextInput}
       >
-        <div className="label">{value && <p>{value}</p>}</div>
+        <div className="label">{value && <p>{secure ? 'Password' : value}</p>}</div>
         <div className="col-1" />
         <div className="col-4 input-wrapper">
           <input

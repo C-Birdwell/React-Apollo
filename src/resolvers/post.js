@@ -22,7 +22,6 @@ const _QueryPosts = func => {
     })
     .then(response => {
       func(response.data.posts)
-      console.log(response)
     })
 }
 
@@ -47,13 +46,24 @@ const _MutateCreatePost = (title, body, published, author, func) => {
       mutation: createPost(title, body, published, author),
       refetchQueries: getPosts,
     })
-    .then(response => {
-      console.log(response),
-        client.query({ query: getPosts }).then(response => console.log(response.data.posts))
+    .then(() => {
+      client.resetStore()
+      client.query({ query: getPosts }).then(response => func(response.data.posts))
     })
     .catch(response => {
       console.log(response)
     })
+}
+
+const _MutateDeletePost = id => {
+  const deletePost = () => gql`
+    mutation{
+      deletePost(id: ${JSON.stringify(id)}
+    ){
+      id
+    }
+    }  
+  `
 }
 
 export { _MutateCreatePost, _QueryPosts }

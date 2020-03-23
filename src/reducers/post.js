@@ -1,5 +1,6 @@
 import {
   POSTS,
+  POSTS_ORDER_REVERSE,
   CREATE_POST_TITLE,
   CREATE_POST_BODY,
   CREATE_POST_PUBLISHED,
@@ -19,6 +20,9 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case POSTS:
       return { ...state, posts: action.payload }
+
+    case POSTS_ORDER_REVERSE:
+      return { ...state, posts: [...action.payload].reverse() }
 
     case CREATE_POST_TITLE:
       return { ...state, createPostTitle: action.payload }

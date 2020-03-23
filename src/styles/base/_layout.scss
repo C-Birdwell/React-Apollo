@@ -23,7 +23,10 @@
   width: 80%;
   margin: 0 auto;
   grid-row-gap: 20px;
-  &.grid-3 {
-    grid-template-columns: 1fr 1fr 1fr;
+
+  @for $i from 1 through 100 {
+    &.grid-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
   }
 }

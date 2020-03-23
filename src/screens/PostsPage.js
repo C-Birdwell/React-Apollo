@@ -2,16 +2,13 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { useHistory, useLocation } from 'react-router-dom'
+// import { useHistory, useLocation } from 'react-router-dom'
+// key={this.props.location.key}
 import { _QueryPosts } from '../resolvers'
 import { _getAllPosts } from '../actions'
+import CardPost from '../components/CardPost'
 
 class PostsPage extends React.Component {
-  componentDidMount() {
-    const { _getAllPosts, posts } = this.props
-    _QueryPosts(_getAllPosts)
-  }
-
   renderHead() {
     return (
       <Helmet>
@@ -20,34 +17,12 @@ class PostsPage extends React.Component {
     )
   }
 
-  renderPost(posts) {
-    return (
-      <div className="grid-container grid-3" key={this.props.location.key}>
-        {posts &&
-          posts.map((item, index) => (
-            <div key={`${index}`} className="card-container">
-              <div className="card-title">
-                <p>{item.title}</p>
-              </div>
-              <div className="card-body">
-                <p>{item.body}</p>
-              </div>
-              <div className="card-author">
-                <p>posted by:</p>
-                <p>{item.author.name}</p>
-              </div>
-            </div>
-          ))}
-      </div>
-    )
-  }
-
   render() {
     const { posts } = this.props
     return (
       <div className="content">
         {this.renderHead()}
-        {this.renderPost(posts)}
+        <CardPost grid={3} />
       </div>
     )
   }

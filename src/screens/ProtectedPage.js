@@ -1,14 +1,13 @@
 import React from 'react'
 import FormPost from '../components/FormPost'
+import CardPost from '../components/CardPost'
 
 const ProtectedPage = () => (
   <div className="content">
     <div className="row">
-      <div className="col-1" />
-      <div className="col-3 center">
+      <div className="col-3">
         <FormPost />
       </div>
-      <div className="col-1" />
     </div>
   </div>
 )

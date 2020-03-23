@@ -1,5 +1,6 @@
 import {
   POSTS,
+  POSTS_ORDER_REVERSE,
   CREATE_POST_TITLE,
   CREATE_POST_BODY,
   CREATE_POST_PUBLISHED,
@@ -9,6 +10,11 @@ import {
 
 export const _getAllPosts = payload => ({
   type: POSTS,
+  payload,
+})
+
+export const _reversePostOrder = payload => ({
+  type: POSTS_ORDER_REVERSE,
   payload,
 })
 
