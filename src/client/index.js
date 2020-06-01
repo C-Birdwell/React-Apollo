@@ -15,15 +15,13 @@ const defaultOptions = {
 }
 
 const client = new ApolloClient({
-  uri: 'https://boilerplate-project-895f882f83.herokuapp.com/',
+  uri: process.env.CLIENT_URL,
   request: operation => {
-    const token = localStorage.getItem('token')
+    const getToken = localStorage.getItem('token')
+    const bearerToken =
+      getToken !== null ? { Authorization: `Bearer ${JSON.parse(getToken).token}` } : null
     operation.setContext({
-      headers: token
-        ? {
-            Authorization: `Bearer ${JSON.parse(token)}`,
-          }
-        : null,
+      headers: bearerToken,
     })
   },
 })

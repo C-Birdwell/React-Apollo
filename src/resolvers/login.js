@@ -1,4 +1,5 @@
 import { gql } from 'apollo-boost'
+import { timeStamp, hashPassword } from '../utils'
 
 import client from '../client'
 
@@ -23,7 +24,7 @@ const _MutationLogIn = (email, password, func, loadStatus) => {
       mutation: loginUser(email, password),
     })
     .then(response => {
-      localStorage.setItem('token', JSON.stringify(response.data.login.token))
+      timeStamp(response)
       func(response.data.login.user)
       loadStatus(false)
     })
