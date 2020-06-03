@@ -15,7 +15,7 @@ const defaultOptions = {
 }
 
 const client = new ApolloClient({
-  uri: `${process.env.CLIENT_URL}`,
+  uri: `https://boilerplate-project-895f882f83.herokuapp.com/`,
   request: operation => {
     console.log(process.env.CLIENT_URL)
     const getToken = localStorage.getItem('token')
