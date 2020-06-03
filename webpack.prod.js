@@ -46,7 +46,7 @@ module.exports = env => {
       CSSExtract,
       new webpack.DefinePlugin({
         'process.env': {
-          CLIENT_URL: JSON.stringify(process.env.CLIENT_URL),
+          CLIENT_URL: process.env.CLIENT_URL,
         },
       }),
     ],
