@@ -17,6 +17,7 @@ const defaultOptions = {
 const client = new ApolloClient({
   uri: process.env.CLIENT_URL,
   request: operation => {
+    console.log(process.env.CLIENT_URL)
     const getToken = localStorage.getItem('token')
     const bearerToken =
       getToken !== null ? { Authorization: `Bearer ${JSON.parse(getToken).token}` } : null
