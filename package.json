@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack",
-    "build:prod": "webpack -p --env production --config webpack.prod.js",
+    "build:prod": "webpack -p --config webpack.prod.js",
     "dev-server": "webpack-dev-server --mode development",
     "destroy": "rm -Rf public/dist",
     "test": "jest --config=jest.config.json",
