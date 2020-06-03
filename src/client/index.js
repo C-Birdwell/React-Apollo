@@ -15,7 +15,7 @@ const defaultOptions = {
 }
 
 const client = new ApolloClient({
-  uri: process.env.CLIENT_URL,
+  uri: `${process.env.CLIENT_URL}`,
   request: operation => {
     console.log(process.env.CLIENT_URL)
     const getToken = localStorage.getItem('token')
